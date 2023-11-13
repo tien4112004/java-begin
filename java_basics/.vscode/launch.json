@@ -1,0 +1,91 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "ClassLoadExample",
+            "request": "launch",
+            "mainClass": "ClassLoadExample",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "PrimeNumber",
+            "request": "launch",
+            "mainClass": "PrimeNumber",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "RandomNumber",
+            "request": "launch",
+            "mainClass": "RandomNumber",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "Simple",
+            "request": "launch",
+            "mainClass": "Simple",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "main",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "CloneExample",
+            "request": "launch",
+            "mainClass": "objects.CloneExample",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "DeserializationExample",
+            "request": "launch",
+            "mainClass": "objects.DeserializationExample",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "ObjectExample",
+            "request": "launch",
+            "mainClass": "objects.ObjectExample",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "SerializationExample",
+            "request": "launch",
+            "mainClass": "objects.SerializationExample",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "newInstanceConstructor",
+            "request": "launch",
+            "mainClass": "objects.newInstanceConstructor",
+            "projectName": "java_basics_5c2a5613"
+        },
+        {
+            "type": "java",
+            "name": "newInstanceExample",
+            "request": "launch",
+            "mainClass": "objects.newInstanceExample",
+            "projectName": "java_basics_5c2a5613"
+        }
+    ]
+}
