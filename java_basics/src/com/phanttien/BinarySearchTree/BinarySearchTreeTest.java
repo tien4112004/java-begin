@@ -1,3 +1,5 @@
+package com.phanttien.BinarySearchTree;
+
 import java.util.Iterator;
 
 public class BinarySearchTreeTest {
@@ -18,7 +20,7 @@ public class BinarySearchTreeTest {
 
         bst.add(10);
 
-        Iterator traverse = bst.traverse(TreeTraverseType.LEVEL_ORDER);
+        Iterator<Integer> traverse = bst.traverse(TreeTraverseType.LEVEL_ORDER);
 
         while (traverse.hasNext()) {
             System.out.print(traverse.next() + ", ");

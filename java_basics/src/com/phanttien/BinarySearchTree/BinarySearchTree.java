@@ -1,4 +1,4 @@
-// package com.phanttien.BinarySearchTree;
+package com.phanttien.BinarySearchTree;
 
 import java.util.Iterator;
 import java.util.Queue;
@@ -8,7 +8,7 @@ import java.util.Stack;
 public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
     private int nodeCount = 0;
 
-    private Node root = null;
+    private Node<T> root = null;
 
     @Override
     public boolean isEmpty() {
@@ -41,8 +41,8 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
 
     @Override
     public boolean add(T element) {
-        Node current = root;
-        Node parent = null;
+        Node<T> current = root;
+        Node<T> parent = null;
         while (current != null) {
             int compare = element.compareTo((T) current.getData());
             parent = current;
@@ -53,7 +53,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
             else
                 current = current.getLeft();
         }
-        current = new Node(element, null, null);
+        current = new Node<T>(element, null, null);
 
         if (parent == null)
             root = current;
@@ -121,8 +121,68 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
         };
     }
 
+    // private Iterator<T> preOrderTraversal() {
+    // return null;
+    // final int expectedCount = nodeCount;
+    // Stack<Node<T>> stack = new Stack<>();
+    // stack.add(root);
+
+    // return new Iterator<T>() {
+    // @Override
+    // public boolean hasNext() {
+    // if (expectedCount != nodeCount)
+    // throw new java.util.ConcurrentModificationException();
+    // return root != null && !stack.isEmpty();
+    // }
+
+    // @Override
+    // public T next() {
+    // if (expectedCount != nodeCount)
+    // throw new java.util.ConcurrentModificationException();
+    // Node<T> current = stack.peek();
+    // stack.pop();
+
+    // if (current.getRight() != null)
+    // stack.add(current.getRight());
+    // if (current.getLeft() != null)
+    // stack.add(current.getLeft());
+
+    // return current.getData();
+    // }
+    // };
+    // }
+
     private Iterator<T> inOrderTraversal() {
+        // final int expectedCount = nodeCount;
+        // Node<T> current = root;
+        // Stack<Node<T>> stack = new Stack<>();
+
         return null;
+        // return new Iterator<T>() {
+        // @Override
+        // public boolean hasNext() {
+        // if (nodeCount != expectedCount)
+        // throw new java.util.ConcurrentModificationException();
+
+        // return root != null && !stack.isEmpty();
+        // }
+
+        // @Override
+        // public T next() {
+        // if (nodeCount != expectedCount)
+        // throw new java.util.ConcurrentModificationException();
+
+        // Node<T> current = stack.peek();
+
+        // while (current.getLeft() != null) {
+        // stack.push(current.getLeft());
+        // current = current.getLeft();
+        // }
+
+        // Node<T> node = stack.pop();
+        // return node.getData();
+        // }
+        // };
     }
 
     private Iterator<T> postOrderTraversal() {
@@ -131,17 +191,19 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
 
     private Iterator<T> levelOrderTraversal() {
         final int expectedCount = nodeCount;
-        Queue<Node> queue = new LinkedList<>();
+        Queue<Node<T>> queue = new LinkedList<>();
         queue.add(root);
 
         return new Iterator<T>() {
             @Override
             public boolean hasNext() {
+                if (expectedCount != nodeCount)
+                    throw new java.util.ConcurrentModificationException();
                 return root != null && !queue.isEmpty();
             }
 
             public T next() {
-                Node node = queue.peek();
+                Node<T> node = queue.peek();
                 queue.remove();
 
                 if (node.getLeft() != null)
@@ -154,13 +216,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
     }
 
     // PRIVATE
-    private int height(Node node) {
+    private int height(Node<T> node) {
         if (node == null)
             return 0;
         return 1 + Math.max(height(node.getLeft()), height(node.getRight()));
     }
 
-    private boolean contains(Node node, T elem) {
+    private boolean contains(Node<T> node, T elem) {
         if (node == null)
             return false;
 
@@ -174,9 +236,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
         }
     }
 
-    private Node add(Node node, T elem) {
+    private Node<T> add(Node<T> node, T elem) {
         if (node == null) {
-            node = new Node(elem, null, null);
+            node = new Node<T>(elem, null, null);
         } else {
             boolean larger = elem.compareTo((T) node.getData()) > 0;
             if (larger) {
@@ -189,7 +251,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
         return node;
     }
 
-    private Node remove(Node node, T elem) {
+    private Node<T> remove(Node<T> node, T elem) {
         if (node == null)
             return null;
 
@@ -200,7 +262,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
             node.setLeft(remove(node.getLeft(), elem));
         } else {
             if (node.getLeft() == null || node.getRight() == null) {
-                Node temp = (node.getLeft() != null ? node.getLeft() : node.getRight());
+                Node<T> temp = (node.getLeft() != null ? node.getLeft() : node.getRight());
                 node.setData(null);
                 node = null;
                 return temp;
@@ -213,14 +275,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
         return node;
     }
 
-    private T minRight(Node node) { // find successor
+    private T minRight(Node<T> node) { // find successor
         while (node.getLeft() != null)
             node = node.getLeft();
 
         return (T) node.getData();
     }
 
-    private T maxLeft(Node node) { // find predecessor
+    private T maxLeft(Node<T> node) { // find predecessor
         while (node.getRight() != null)
             node = node.getRight();
 

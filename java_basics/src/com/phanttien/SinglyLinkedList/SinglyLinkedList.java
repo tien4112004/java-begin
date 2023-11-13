@@ -1,13 +1,16 @@
-// package phanttien.doublyLinkedList;
 
-public interface DoublyLinkedList<T> extends Iterable<T> {
+package com.phanttien.SinglyLinkedList;
+
+import com.phanttien.SinglyLinkedList.SListNode;
+
+public interface SinglyLinkedList<T> extends Iterable<T> {
+    void printList();
+
     void clear();
 
     int size();
 
-    boolean empty();
-
-    void add(T element);
+    boolean isEmpty();
 
     void addFirst(T element);
 
@@ -17,13 +20,13 @@ public interface DoublyLinkedList<T> extends Iterable<T> {
 
     T peekLast();
 
-    Node<T> getTailNode();
+    SListNode<T> getTailNode();
 
     T removeFirst();
 
     T removeLast();
 
-    T remove(Node<T> node);
+    T remove(SListNode<T> node);
 
     boolean remove(Object obj);
 
@@ -32,6 +35,4 @@ public interface DoublyLinkedList<T> extends Iterable<T> {
     int indexOf(Object obj);
 
     boolean contains(Object obj);
-
-    void printList();
 }

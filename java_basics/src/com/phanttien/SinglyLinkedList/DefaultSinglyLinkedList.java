@@ -1,20 +1,22 @@
-// package com.phanttien.singlyLinkedList; 
+package com.phanttien.SinglyLinkedList;
 
 // import java.nio.ReadOnlyBufferException;
 import java.util.Iterator;
+
+import javax.swing.plaf.synth.SynthListUI;
 
 // import javax.management.RuntimeErrorException;
 
 public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     private int size;
-    private Node<T> head = null;
-    private Node<T> tail = null;
+    private SListNode<T> head = null;
+    private SListNode<T> tail = null;
 
     @Override
     public void clear() {
-        Node<T> current = head;
+        SListNode<T> current = head;
         while (current != null) {
-            Node<T> next = current.getNext();
+            SListNode<T> next = current.getNext();
 
             current.setNext(null);
             current.setData(null);
@@ -38,7 +40,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     public void addFirst(T element) {
         if (element == null)
             throw new IllegalArgumentException("Data cannot be null");
-        Node<T> new_node = new Node<T>(element, head);
+        SListNode<T> new_node = new SListNode<T>(element, head);
 
         if (isEmpty()) {
             tail = new_node;
@@ -53,7 +55,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     public void addLast(T element) {
         if (element == null)
             throw new IllegalArgumentException("Data cannot be null");
-        Node<T> new_node = new Node<T>(element, null);
+        SListNode<T> new_node = new SListNode<T>(element, null);
 
         if (isEmpty()) {
             head = new_node;
@@ -79,7 +81,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     }
 
     @Override
-    public Node<T> getTailNode() {
+    public SListNode<T> getTailNode() {
         return tail;
     }
 
@@ -100,7 +102,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
         if (isEmpty())
             throw new RuntimeException("Empty list!");
         T data = tail.getData();
-        Node<T> current = head;
+        SListNode<T> current = head;
         while (current.getNext() != tail) {
             current = current.getNext();
         }
@@ -112,7 +114,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     }
 
     @Override
-    public T remove(Node<T> node) {
+    public T remove(SListNode<T> node) {
         if (node == null)
             throw new IllegalArgumentException("Node cannot be null");
         if (node.getNext() == null)
@@ -128,7 +130,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     public boolean remove(Object obj) {
         if (obj == null)
             throw new IllegalArgumentException("Object cannot be null");
-        Node<T> current = head;
+        SListNode<T> current = head;
         while (current != null) {
             if (current.equals(obj)) {
                 remove(current);
@@ -145,7 +147,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
         if (index < 0 || index >= size)
             throw new IllegalArgumentException("Index cannot be negative or greater than size");
         int i = 0;
-        Node<T> current = head;
+        SListNode<T> current = head;
         while (current != null) {
             if (i == index) {
                 remove(current);
@@ -162,7 +164,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
         if (obj == null)
             throw new IllegalArgumentException("Object cannot be null");
         int index = 0;
-        Node<T> current = head;
+        SListNode<T> current = head;
         while (current != null) {
             if (current.equals(obj)) {
                 return index;
@@ -182,7 +184,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            private Node<T> current = head;
+            private SListNode<T> current = head;
 
             @Override
             public boolean hasNext() {
@@ -206,7 +208,7 @@ public class DefaultSinglyLinkedList<T> implements SinglyLinkedList<T> {
             StringBuilder sb = new StringBuilder(size);
             sb.append("[ ");
 
-            Node<T> current = head;
+            SListNode<T> current = head;
             while (current != null) {
                 sb.append(current.getData());
                 if (current.getNext() != null) {

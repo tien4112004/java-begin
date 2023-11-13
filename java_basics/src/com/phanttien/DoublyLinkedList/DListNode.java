@@ -1,11 +1,11 @@
-//  package phanttien.doublyLinkedList;
+package com.phanttien.DoublyLinkedList;
 
 // import javax.swing.text.html.HTMLDocument.Iterator;
 
-public class Node<T> {
+public class DListNode<T> {
     private T data;
-    private Node<T> prev;
-    private Node<T> next;
+    private DListNode<T> prev;
+    private DListNode<T> next;
 
     public T getData() {
         if (data == null) {
@@ -18,23 +18,23 @@ public class Node<T> {
         this.data = data;
     }
 
-    public Node<T> getPrev() {
+    public DListNode<T> getPrev() {
         return prev;
     }
 
-    public void setPrev(Node<T> prev) {
+    public void setPrev(DListNode<T> prev) {
         this.prev = prev;
     }
 
-    public Node<T> getNext() {
+    public DListNode<T> getNext() {
         return next;
     }
 
-    public void setNext(Node<T> next) {
+    public void setNext(DListNode<T> next) {
         this.next = next;
     }
 
-    public Node(T data, Node<T> prev, Node<T> next) {
+    public DListNode(T data, DListNode<T> prev, DListNode<T> next) {
         this.data = data;
         this.prev = prev;
         this.next = next;

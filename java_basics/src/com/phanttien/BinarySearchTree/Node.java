@@ -1,4 +1,4 @@
-// package com.phanttien.BinarySearchTree;
+package com.phanttien.BinarySearchTree;
 
 public class Node<T extends Comparable<T>> {
     private T data;

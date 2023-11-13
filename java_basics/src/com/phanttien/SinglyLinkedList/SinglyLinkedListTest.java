@@ -1,29 +1,34 @@
-// package com.phanttien.doublyLinkedList;
+package com.phanttien.SinglyLinkedList;
 
 import java.util.Scanner;
 import java.io.File;
 
-public class main {
+// import javax.swing.DefaultBoundedRangeModel;
+
+// import javafx.scene.control.Slider;
+
+public class SinglyLinkedListTest {
     public static void main(String args[]) {
         long start = System.nanoTime();
-
+        // Scanner s = new Scanner(System.in);
         Scanner s;
         try {
             s = new Scanner(new File("in"));
         } catch (Exception e) {
-            System.out.println("File not found! Using input from console.");
+            System.out.println("File not found, using input from console");
             s = new Scanner(System.in);
         }
 
         int n = s.nextInt();
 
         int[] a = new int[n];
+
         for (int i = 0; i < n; i++) {
             a[i] = s.nextInt();
         }
 
         // Create linked list from array a[]
-        DoublyLinkedList<Integer> list = new DefaultDoublyLinkedList<Integer>();
+        SinglyLinkedList<Integer> list = new DefaultSinglyLinkedList<Integer>();
         for (int i = 0; i < n / 2; i++) {
             list.addFirst(a[i]);
         }
@@ -33,13 +38,13 @@ public class main {
         System.out.println("list.peekFirst() = " + list.peekFirst() + "\n");
         System.out.println("list.peekLast() = " + list.peekLast() + "\n");
 
-        System.out.println(list.toString());
+        list.printList();
 
         System.out.println();
         list.removeFirst();
         list.printList();
 
-        Node<Integer> lastNode = list.getTailNode();
+        SListNode<Integer> lastNode = list.getTailNode();
         System.out.println();
         // list.removeLast();
         list.remove(lastNode);

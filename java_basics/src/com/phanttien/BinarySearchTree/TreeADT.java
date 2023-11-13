@@ -1,4 +1,4 @@
-// package com.phanttien.BinarySearchTree;
+package com.phanttien.BinarySearchTree;
 
 import java.util.Iterator;
 

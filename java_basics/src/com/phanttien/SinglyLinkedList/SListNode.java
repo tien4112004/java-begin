@@ -1,8 +1,8 @@
-// package com.phanttien.singlyLinkedList;
+package com.phanttien.SinglyLinkedList;
 
-class Node<T> {
+class SListNode<T> {
     private T data;
-    private Node<T> next;
+    private SListNode<T> next;
 
     public T getData() {
         if (data == null) {
@@ -18,16 +18,16 @@ class Node<T> {
         this.data = data;
     }
 
-    public Node<T> getNext() {
+    public SListNode<T> getNext() {
         return next;
     }
 
-    public Node<T> setNext(Node<T> next) {
+    public SListNode<T> setNext(SListNode<T> next) {
         this.next = next;
         return this;
     }
 
-    public Node(T data, Node<T> next) {
+    public SListNode(T data, SListNode<T> next) {
         if (data == null) {
             throw new IllegalArgumentException("Data cannot be null");
         }

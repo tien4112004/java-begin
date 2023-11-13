@@ -1,17 +1,17 @@
-// package phanttien.doublyLinkedList;
+package com.phanttien.DoublyLinkedList;
 
 import java.util.Iterator;
 
 public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
     private int size;
-    private Node<T> head;
-    private Node<T> tail;
+    private DListNode<T> head;
+    private DListNode<T> tail;
 
     @Override
     public void clear() {
-        Node<T> current = head;
+        DListNode<T> current = head;
         while (current != null) {
-            Node<T> next = current.getNext();
+            DListNode<T> next = current.getNext();
             current.setPrev(null);
             current.setData(null);
             current.setNext(null);
@@ -33,7 +33,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
     @Override
     public void addFirst(T element) {
-        Node<T> new_node = new Node<T>(element, null, head);
+        DListNode<T> new_node = new DListNode<T>(element, null, head);
         if (empty())
             tail = new_node;
         if (head != null)
@@ -44,7 +44,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
     @Override
     public void addLast(T element) {
-        Node<T> new_node = new Node<T>(element, tail, null);
+        DListNode<T> new_node = new DListNode<T>(element, tail, null);
         if (empty())
             head = new_node;
         if (tail != null)
@@ -73,7 +73,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
     }
 
     @Override
-    public Node<T> getTailNode() {
+    public DListNode<T> getTailNode() {
         if (empty())
             throw new RuntimeException("Empty list.");
         return tail;
@@ -84,7 +84,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
         if (empty())
             throw new IllegalArgumentException("Empty list.");
         T data = head.getData();
-        Node<T> node = head.getNext();
+        DListNode<T> node = head.getNext();
         if (node != null)
             node.setPrev(null);
         head.setData(null);
@@ -99,7 +99,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
         if (empty())
             throw new IllegalArgumentException("Empty list.");
         T data = tail.getData();
-        Node<T> node = tail.getPrev();
+        DListNode<T> node = tail.getPrev();
         tail.setData(null);
         tail.setPrev(null);
         if (node != null)
@@ -110,7 +110,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
     }
 
     @Override
-    public T remove(Node<T> node) {
+    public T remove(DListNode<T> node) {
         if (node == null) {
             throw new IllegalArgumentException("Node cannot be null.");
         }
@@ -120,8 +120,8 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
             return removeLast();
 
         T data = node.getData();
-        Node<T> prev = node.getPrev();
-        Node<T> next = node.getNext();
+        DListNode<T> prev = node.getPrev();
+        DListNode<T> next = node.getNext();
         prev.setNext(next);
         next.setPrev(prev);
         node.setData(null);
@@ -133,7 +133,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
     @Override
     public boolean remove(Object obj) {
-        Node<T> current = head;
+        DListNode<T> current = head;
 
         if (obj == null) {
             while (current != null) {
@@ -159,7 +159,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
     @Override
     public T removeAt(int index) {
-        Node<T> current = head;
+        DListNode<T> current = head;
         int i = 0;
         while (current != null) {
             if (i == index) {
@@ -173,11 +173,10 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
         throw new IllegalArgumentException("Index not found.");
     }
-    
 
     @Override
     public int indexOf(Object obj) {
-        Node<T> current = head;
+        DListNode<T> current = head;
         int i = 0;
         while (current != null) {
             if (current.getData().equals(obj)) {
@@ -191,7 +190,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
 
     @Override
     public boolean contains(Object obj) {
-        Node<T> current = head;
+        DListNode<T> current = head;
         while (current != null) {
             if (current.getData().equals(obj)) {
                 return true;
@@ -204,7 +203,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            private Node<T> current = head;
+            private DListNode<T> current = head;
 
             @Override
             public boolean hasNext() {
@@ -228,7 +227,7 @@ public class DefaultDoublyLinkedList<T> implements DoublyLinkedList<T> {
             StringBuilder sb = new StringBuilder(size);
             sb.append("[ ");
 
-            Node<T> current = head;
+            DListNode<T> current = head;
 
             while (current != null) {
                 sb.append(current.getData());
