@@ -21,7 +21,12 @@ public class BinarySearchTreeTest {
         bst.add(10);
 
         Iterator<Integer> traverse = bst.traverse(TreeTraverseType.LEVEL_ORDER);
+        while (traverse.hasNext()) {
+            System.out.print(traverse.next() + ", ");
+        }
+        System.out.println();
 
+        traverse = bst.traverse(TreeTraverseType.IN_ORDER);
         while (traverse.hasNext()) {
             System.out.print(traverse.next() + ", ");
         }

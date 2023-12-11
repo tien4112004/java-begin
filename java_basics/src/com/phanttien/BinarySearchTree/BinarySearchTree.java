@@ -153,36 +153,38 @@ public class BinarySearchTree<T extends Comparable<T>> implements TreeADT<T> {
     // }
 
     private Iterator<T> inOrderTraversal() {
-        // final int expectedCount = nodeCount;
-        // Node<T> current = root;
-        // Stack<Node<T>> stack = new Stack<>();
+        final int expectedCount = nodeCount;
+        Stack<Node<T>> stack = new Stack<>();
 
-        return null;
-        // return new Iterator<T>() {
-        // @Override
-        // public boolean hasNext() {
-        // if (nodeCount != expectedCount)
-        // throw new java.util.ConcurrentModificationException();
+        // return null;
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                if (nodeCount != expectedCount)
+                    throw new java.util.ConcurrentModificationException();
 
-        // return root != null && !stack.isEmpty();
-        // }
+                return root != null && !stack.isEmpty();
+            }
 
-        // @Override
-        // public T next() {
-        // if (nodeCount != expectedCount)
-        // throw new java.util.ConcurrentModificationException();
+            @Override
+            public T next() {
+                if (nodeCount != expectedCount)
+                    throw new java.util.ConcurrentModificationException();
 
-        // Node<T> current = stack.peek();
+                Node<T> current = stack.peek();
+                stack.pop();
 
-        // while (current.getLeft() != null) {
-        // stack.push(current.getLeft());
-        // current = current.getLeft();
-        // }
+                while (current.getLeft() != null) {
+                    stack.push(current.getLeft());
+                    current = current.getLeft();
+                }
 
-        // Node<T> node = stack.pop();
-        // return node.getData();
-        // }
-        // };
+                Node<T> node = stack.pop();
+                if (node.getRight() != null)
+                    stack.push(node.getRight());
+                return node.getData();
+            }
+        };
     }
 
     private Iterator<T> postOrderTraversal() {
